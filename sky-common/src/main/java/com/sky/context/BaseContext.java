@@ -2,7 +2,7 @@ package com.sky.context;
 
 public class BaseContext {
 
-    public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
+    public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();//相当于共享域用于存储数据
 
     public static void setCurrentId(Long id) {
         threadLocal.set(id);
@@ -15,5 +15,4 @@ public class BaseContext {
     public static void removeCurrentId() {
         threadLocal.remove();
     }
-
 }
