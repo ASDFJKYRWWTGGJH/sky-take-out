@@ -16,15 +16,14 @@ create_time,update_time,create_user,update_user)values (#{name}, #{username}, #{
             <if test="password !=null "> password=#{password},</if>
             <if test="phone !=null "> phone=#{phone},</if>
             <if test="sex !=null "> sex=#{sex},</if>
-            <if test="idNumber !=null "> idNumber=#{idNumber},</if>
-            <if test="updateTime !=null "> updateTime=#{updateTime},</if>
-            <if test="updateUser !=null "> updateUser=#{updateUser},</if>
+            <if test="idNumber !=null "> id_number=#{idNumber},</if>
+            <if test="updateTime !=null "> update_time=#{updateTime},</if>
+            <if test="updateUser !=null "> update_user=#{updateUser},</if>
             <if test="status !=null "> status =#{status}</if>
 
         </set>
         where id = #{id}
     </update>
-
 
 
 
@@ -36,5 +35,8 @@ create_time,update_time,create_user,update_user)values (#{name}, #{username}, #{
               </if>
           </where>
           order by create_time desc
+    </select>
+    <select id="selectById" resultType="com.sky.entity.Employee">
+        select * from employee where id = #{id}
     </select>
 </mapper>

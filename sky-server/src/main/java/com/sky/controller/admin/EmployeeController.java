@@ -97,4 +97,24 @@ public class EmployeeController {
          employeeService.startOrStop(status,id);
         return Result.success();
      }
+
+    /**
+     * 修改前得回显功能，根据id查询需要修改得员工信息
+     * @param
+     * @return
+     */
+     @GetMapping("{id}")
+     @ApiOperation("根据id查询员信息")
+    public Result<Employee> selectById(@PathVariable Long id){
+         Employee employee = employeeService.selectById(id);
+         employee.setPassword("****");
+         return Result.success(employee);
+     }
+     @PutMapping
+     @ApiOperation("修改员工信息")
+    public Result update(@RequestBody EmployeeDTO employeeDto){
+         log.info("修改员工信息:{}",employeeDto);
+         employeeService.update(employeeDto);
+         return Result.success();
+     }
 }
